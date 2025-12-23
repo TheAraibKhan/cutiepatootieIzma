@@ -52,6 +52,147 @@ body {
   50% { transform: translateY(-10px); }
 }
 
+/* VOICE MESSAGE FIRST */
+.voice-intro-section {
+  background: linear-gradient(135deg, #ff69b4 0%, #ffa6c9 50%, #ffd1dc 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.voice-intro-container {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 30px;
+  padding: 60px 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 80px rgba(255,105,180,0.4);
+  border: 3px solid rgba(255,255,255,0.4);
+  text-align: center;
+  animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.voice-intro-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 30px rgba(255,182,193,0.6);
+}
+
+.voice-intro-subtitle {
+  font-family: 'Satisfy', cursive;
+  font-size: 1.8rem;
+  margin-bottom: 50px;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.audio-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.play-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(255,20,147,0.5), 0 0 40px rgba(255,105,180,0.3);
+  transition: all 0.3s ease;
+  animation: pulse 2s ease-in-out infinite;
+  border: 4px solid rgba(255,255,255,0.4);
+}
+
+.play-button:hover { 
+  transform: scale(1.15); 
+  box-shadow: 0 15px 40px rgba(255,20,147,0.7), 0 0 60px rgba(255,105,180,0.6);
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 10px 30px rgba(255,20,147,0.5), 0 0 40px rgba(255,105,180,0.3); }
+  50% { box-shadow: 0 15px 40px rgba(255,20,147,0.8), 0 0 60px rgba(255,105,180,0.6); }
+}
+
+.waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 60px;
+  margin-top: 20px;
+}
+
+.waveform span {
+  width: 5px;
+  height: 20px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 3px;
+  animation: wave 1.2s ease-in-out infinite;
+}
+
+.waveform span:nth-child(1) { animation-delay: 0s; }
+.waveform span:nth-child(2) { animation-delay: 0.1s; }
+.waveform span:nth-child(3) { animation-delay: 0.2s; }
+.waveform span:nth-child(4) { animation-delay: 0.3s; }
+.waveform span:nth-child(5) { animation-delay: 0.4s; }
+.waveform span:nth-child(6) { animation-delay: 0.5s; }
+.waveform span:nth-child(7) { animation-delay: 0.6s; }
+.waveform span:nth-child(8) { animation-delay: 0.7s; }
+.waveform span:nth-child(9) { animation-delay: 0.8s; }
+.waveform span:nth-child(10) { animation-delay: 0.9s; }
+
+@keyframes wave {
+  0%, 100% { height: 20px; opacity: 0.5; }
+  50% { height: 60px; opacity: 1; }
+}
+
+.waveform.playing span {
+  animation-play-state: running;
+}
+
+.waveform.paused span {
+  animation-play-state: paused;
+  opacity: 0.5;
+}
+
+.continue-btn {
+  margin-top: 30px;
+  padding: 14px 36px;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffd1dc 0%, #ffe6a7 100%);
+  color: #3b1a1a;
+  box-shadow: 0 6px 20px rgba(255,209,220,0.5);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255,255,255,0.5);
+  display: none;
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255,209,220,0.7);
+}
+
 .cake-zone {
   position: relative;
   width: 100%;
@@ -330,24 +471,26 @@ button:hover {
   100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
 }
 
-/* PHOTO GALLERY SECTION */
-.gallery-section {
-  background: linear-gradient(135deg, #ff8fab 0%, #ffa6c9 50%, #ffc1d9 100%);
+.gallery-section, .poetry-section, .final-section {
   opacity: 0;
   transform: translateY(50px);
   transition: all 1s ease-out;
   padding: 80px 20px;
 }
 
-.gallery-section.visible { opacity: 1; transform: translateY(0); }
+.gallery-section { background: linear-gradient(135deg, #ff8fab 0%, #ffa6c9 50%, #ffc1d9 100%); }
+.poetry-section { background: linear-gradient(135deg, #ffc1d9 0%, #ff8fab 50%, #ff69b4 100%); }
+.final-section { background: linear-gradient(135deg, #ffd1dc 0%, #ffa6c9 50%, #ff8fab 100%); }
 
-.gallery-container {
+.gallery-section.visible, .poetry-section.visible, .final-section.visible { opacity: 1; transform: translateY(0); }
+
+.gallery-container, .poetry-container {
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
 }
 
-.gallery-title {
+.gallery-title, .poetry-title {
   font-family: 'Pacifico', cursive;
   font-size: 3.5rem;
   text-align: center;
@@ -405,12 +548,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Satisfy', cursive;
-  font-size: 1.3rem;
-  color: rgba(255,255,255,0.9);
-  border: 2px dashed rgba(255,255,255,0.5);
-  text-align: center;
-  padding: 20px;
+  overflow: hidden;
 }
 
 .photo-placeholder img {
@@ -428,27 +566,13 @@ button:hover {
   text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/* POETRY SECTION */
-.poetry-section {
-  background: linear-gradient(135deg, #ffc1d9 0%, #ff8fab 50%, #ff69b4 100%);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
-  padding: 80px 20px;
-}
-
-.poetry-section.visible { opacity: 1; transform: translateY(0); }
-
 .poetry-container {
-  max-width: 800px;
-  width: 100%;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(15px);
   border-radius: 30px;
   padding: 60px 40px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255,105,180,0.3);
   border: 3px solid rgba(255,255,255,0.4);
-  margin: 0 auto;
 }
 
 .poetry-title {
@@ -456,7 +580,6 @@ button:hover {
   font-size: 4rem;
   text-align: center;
   margin-bottom: 40px;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 40px rgba(255,182,193,0.8);
 }
 
 .poetry-images {
@@ -487,12 +610,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Satisfy', cursive;
-  font-size: 1.5rem;
-  color: rgba(255,255,255,0.9);
-  border: 2px dashed rgba(255,255,255,0.5);
-  text-align: center;
-  padding: 40px;
+  overflow: hidden;
 }
 
 .poetry-placeholder img {
@@ -507,133 +625,6 @@ button:hover {
   0% { opacity: 0; transform: scale(0.95) rotateX(-10deg); }
   100% { opacity: 1; transform: scale(1) rotateX(0); }
 }
-
-/* VOICE MESSAGE SECTION */
-.voice-section {
-  background: linear-gradient(135deg, #ff69b4 0%, #ffa6c9 50%, #ffd1dc 100%);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
-  padding: 80px 20px;
-}
-
-.voice-section.visible { opacity: 1; transform: translateY(0); }
-
-.voice-container {
-  max-width: 600px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  border-radius: 30px;
-  padding: 60px 40px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 80px rgba(255,105,180,0.4);
-  border: 3px solid rgba(255,255,255,0.4);
-  text-align: center;
-  margin: 0 auto;
-}
-
-.voice-title {
-  font-family: 'Pacifico', cursive;
-  font-size: 3.5rem;
-  margin-bottom: 15px;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.3), 0 0 30px rgba(255,182,193,0.6);
-}
-
-.voice-subtitle {
-  font-family: 'Satisfy', cursive;
-  font-size: 1.8rem;
-  margin-bottom: 50px;
-  opacity: 0.95;
-  line-height: 1.6;
-}
-
-.audio-player {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-
-.play-button {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff69b4, #ff1493);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  color: white;
-  box-shadow: 0 10px 30px rgba(255,20,147,0.5), 0 0 40px rgba(255,105,180,0.3);
-  transition: all 0.3s ease;
-  animation: pulse 2s ease-in-out infinite;
-  border: 4px solid rgba(255,255,255,0.4);
-}
-
-.play-button:hover { 
-  transform: scale(1.15); 
-  box-shadow: 0 15px 40px rgba(255,20,147,0.7), 0 0 60px rgba(255,105,180,0.6);
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 10px 30px rgba(255,20,147,0.5), 0 0 40px rgba(255,105,180,0.3); }
-  50% { box-shadow: 0 15px 40px rgba(255,20,147,0.8), 0 0 60px rgba(255,105,180,0.6); }
-}
-
-.waveform {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  height: 60px;
-  margin-top: 20px;
-}
-
-.waveform span {
-  width: 5px;
-  height: 20px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 3px;
-  animation: wave 1.2s ease-in-out infinite;
-}
-
-.waveform span:nth-child(1) { animation-delay: 0s; }
-.waveform span:nth-child(2) { animation-delay: 0.1s; }
-.waveform span:nth-child(3) { animation-delay: 0.2s; }
-.waveform span:nth-child(4) { animation-delay: 0.3s; }
-.waveform span:nth-child(5) { animation-delay: 0.4s; }
-.waveform span:nth-child(6) { animation-delay: 0.5s; }
-.waveform span:nth-child(7) { animation-delay: 0.6s; }
-.waveform span:nth-child(8) { animation-delay: 0.7s; }
-.waveform span:nth-child(9) { animation-delay: 0.8s; }
-.waveform span:nth-child(10) { animation-delay: 0.9s; }
-
-@keyframes wave {
-  0%, 100% { height: 20px; opacity: 0.5; }
-  50% { height: 60px; opacity: 1; }
-}
-
-.waveform.playing span {
-  animation-play-state: running;
-}
-
-.waveform.paused span {
-  animation-play-state: paused;
-  opacity: 0.5;
-}
-
-/* FINAL MESSAGE SECTION */
-.final-section {
-  background: linear-gradient(135deg, #ffd1dc 0%, #ffa6c9 50%, #ff8fab 100%);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease-out;
-  padding: 80px 20px;
-}
-
-.final-section.visible { opacity: 1; transform: translateY(0); }
 
 .final-message {
   font-family: 'Dancing Script', cursive;
@@ -677,23 +668,41 @@ button:hover {
   100% { opacity: 0; transform: translateY(100vh) rotate(360deg); }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .title { font-size: 2.5rem; }
-  .gallery-title, .poetry-title, .voice-title { font-size: 2.5rem; }
+  .gallery-title, .poetry-title, .voice-intro-title { font-size: 2.5rem; }
   .message { font-size: 3rem; }
   .final-message { font-size: 2.5rem; }
   .signature { font-size: 3.5rem; }
   .photo-grid { grid-template-columns: 1fr; }
 }
+
+.hidden { display: none; }
 </style>
 </head>
 <body>
 
 <div class="hearts-rain" id="heartsRain"></div>
 
+<!-- VOICE MESSAGE SECTION (FIRST) -->
+<div class="voice-intro-section" id="voiceIntroSection">
+  <div class="voice-intro-container">
+    <div class="voice-intro-title">A Special Message 💖</div>
+    <div class="voice-intro-subtitle">Before we celebrate, I have something special to tell you...<br>Press play and listen with your heart 💕</div>
+    <div class="audio-player">
+      <button class="play-button" id="playBtnIntro">▶️</button>
+      <audio id="audioPlayerIntro" src="abc.mp3"></audio>
+      <div class="waveform paused" id="waveformIntro">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <button class="continue-btn" id="continueBtn">Continue to Celebration 🎂✨</button>
+  </div>
+</div>
+
 <!-- CAKE SECTION -->
-<div class="section">
+<div class="section hidden" id="cakeSection">
   <div class="wrapper">
     <div class="title">For My Loveliest Cutie Izma 🎂</div>
     
@@ -739,25 +748,25 @@ button:hover {
     <div class="photo-grid">
       <div class="photo-frame">
         <div class="photo-placeholder" id="photo1">
-          Your beautiful smile ✨
+          <img src="YOUR_IMAGE_PATH_1.jpg" alt="Izma's photo 1">
         </div>
         <div class="photo-caption">The one who lights up my world</div>
       </div>
       <div class="photo-frame">
         <div class="photo-placeholder" id="photo2">
-          Your radiant glow 🌟
+          <img src="YOUR_IMAGE_PATH_2.jpg" alt="Izma's photo 2">
         </div>
         <div class="photo-caption">My source of happiness</div>
       </div>
       <div class="photo-frame">
         <div class="photo-placeholder" id="photo3">
-          Your magical presence 💫
+          <img src="YOUR_IMAGE_PATH_3.jpg" alt="Izma's photo 3">
         </div>
         <div class="photo-caption">Every moment with you is precious</div>
       </div>
       <div class="photo-frame">
         <div class="photo-placeholder" id="photo4">
-          Your endless beauty 🌹
+          <img src="YOUR_IMAGE_PATH_4.jpg" alt="Izma's photo 4">
         </div>
         <div class="photo-caption">The birthday girl who stole my heart</div>
       </div>
@@ -772,34 +781,18 @@ button:hover {
     <div class="poetry-images">
       <div class="poetry-image-wrapper">
         <div class="poetry-placeholder" id="poetry1">
-          Your poem will bloom here like a flower 🌸
+          <img src="YOUR_POETRY_IMAGE_1.jpg" alt="Poetry 1">
         </div>
       </div>
       <div class="poetry-image-wrapper">
         <div class="poetry-placeholder" id="poetry2">
-          Sweet words written just for you 💌
+          <img src="YOUR_POETRY_IMAGE_2.jpg" alt="Poetry 2">
         </div>
       </div>
       <div class="poetry-image-wrapper">
         <div class="poetry-placeholder" id="poetry3">
-          Verses that capture my feelings ✨
+          <img src="YOUR_POETRY_IMAGE_3.jpg" alt="Poetry 3">
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- VOICE MESSAGE SECTION -->
-<div class="section voice-section" id="voiceSection">
-  <div class="voice-container">
-    <div class="voice-title">A Message From My Heart 💖</div>
-    <div class="voice-subtitle">Close your eyes, press play,<br>and listen to my heart speak to yours 💕</div>
-    <div class="audio-player">
-      <button class="play-button" id="playBtn" title="Play my voice message for you">▶️</button>
-      <audio id="audioPlayer" style="display:none;"></audio>
-      <div class="waveform paused" id="waveform">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
       </div>
     </div>
   </div>
@@ -828,6 +821,45 @@ const rightCake = document.getElementById("rightCake");
 const plate = document.getElementById("plate");
 const finalText = document.getElementById("finalText");
 const confettiColors = ['#ff1493', '#ff69b4', '#ffa6c9', '#ffd700', '#ff6347', '#87ceeb', '#98fb98', '#dda0dd'];
+
+// Voice intro controls
+const audioPlayerIntro = document.getElementById('audioPlayerIntro');
+const playBtnIntro = document.getElementById('playBtnIntro');
+const waveformIntro = document.getElementById('waveformIntro');
+const continueBtn = document.getElementById('continueBtn');
+const voiceIntroSection = document.getElementById('voiceIntroSection');
+const cakeSection = document.getElementById('cakeSection');
+
+// Play button for intro audio
+playBtnIntro.addEventListener('click', () => {
+  if (audioPlayerIntro.paused) {
+    audioPlayerIntro.play();
+    playBtnIntro.textContent = '⏸️';
+    waveformIntro.classList.remove('paused');
+    waveformIntro.classList.add('playing');
+  } else {
+    audioPlayerIntro.pause();
+    playBtnIntro.textContent = '▶️';
+    waveformIntro.classList.remove('playing');
+    waveformIntro.classList.add('paused');
+  }
+});
+
+// Show continue button when audio ends
+audioPlayerIntro.addEventListener('ended', () => {
+  playBtnIntro.textContent = '▶️';
+  waveformIntro.classList.remove('playing');
+  waveformIntro.classList.add('paused');
+  continueBtn.style.display = 'block';
+  createHeartsRain();
+});
+
+// Continue to cake section
+continueBtn.addEventListener('click', () => {
+  voiceIntroSection.style.display = 'none';
+  cakeSection.classList.remove('hidden');
+  createHeartsRain();
+});
 
 function createConfetti() {
   const container = document.getElementById('confettiContainer');
@@ -922,145 +954,7 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(document.getElementById('gallerySection'));
 observer.observe(document.getElementById('poetrySection'));
-observer.observe(document.getElementById('voiceSection'));
 observer.observe(document.getElementById('finalSection'));
-
-// File upload system
-const audioPlayer = document.getElementById('audioPlayer');
-const playBtn = document.getElementById('playBtn');
-const waveform = document.getElementById('waveform');
-
-window.addEventListener('DOMContentLoaded', () => {
-  // Create hidden file inputs
-  const audioInput = document.createElement('input');
-  audioInput.type = 'file';
-  audioInput.accept = 'audio/*';
-  audioInput.id = 'hiddenAudioInput';
-  audioInput.style.display = 'none';
-  
-  const photoInputs = [];
-  for (let i = 1; i <= 4; i++) {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.id = `hiddenPhotoInput${i}`;
-    input.style.display = 'none';
-    photoInputs.push(input);
-    document.body.appendChild(input);
-  }
-  
-  const poetryInputs = [];
-  for (let i = 1; i <= 3; i++) {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.id = `hiddenPoetryInput${i}`;
-    input.style.display = 'none';
-    poetryInputs.push(input);
-    document.body.appendChild(input);
-  }
-  
-  document.body.appendChild(audioInput);
-  
-  // Audio handler
-  audioInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      audioPlayer.src = url;
-      playBtn.textContent = '▶️';
-    }
-  });
-  
-  // Photo handlers
-  photoInputs.forEach((input, index) => {
-    input.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const placeholder = document.getElementById(`photo${index + 1}`);
-          placeholder.innerHTML = `<img src="${event.target.result}" alt="Izma's photo ${index + 1}">`;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  });
-  
-  // Poetry handlers
-  poetryInputs.forEach((input, index) => {
-    input.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const placeholder = document.getElementById(`poetry${index + 1}`);
-          placeholder.innerHTML = `<img src="${event.target.result}" alt="Poetry ${index + 1}">`;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  });
-  
-  // Upload prompts
-  setTimeout(() => {
-    if (confirm('💕 Would you like to upload photos of the birthday girl? (You can upload 4 photos)')) {
-      photoInputs[0].click();
-      photoInputs[0].addEventListener('change', () => {
-        setTimeout(() => photoInputs[1].click(), 500);
-      }, { once: true });
-      photoInputs[1].addEventListener('change', () => {
-        setTimeout(() => photoInputs[2].click(), 500);
-      }, { once: true });
-      photoInputs[2].addEventListener('change', () => {
-        setTimeout(() => photoInputs[3].click(), 500);
-      }, { once: true });
-    }
-  }, 3000);
-  
-  setTimeout(() => {
-    if (confirm('📝 Would you like to upload your poetry images? (You can upload 3 images)')) {
-      poetryInputs[0].click();
-      poetryInputs[0].addEventListener('change', () => {
-        setTimeout(() => poetryInputs[1].click(), 500);
-      }, { once: true });
-      poetryInputs[1].addEventListener('change', () => {
-        setTimeout(() => poetryInputs[2].click(), 500);
-      }, { once: true });
-    }
-  }, 6000);
-  
-  setTimeout(() => {
-    if (confirm('🎤 Would you like to upload your voice message for her?')) {
-      audioInput.click();
-    }
-  }, 9000);
-});
-
-// Play button functionality
-playBtn.addEventListener('click', () => {
-  if (audioPlayer.src) {
-    if (audioPlayer.paused) {
-      audioPlayer.play();
-      playBtn.textContent = '⏸️';
-      waveform.classList.remove('paused');
-      waveform.classList.add('playing');
-    } else {
-      audioPlayer.pause();
-      playBtn.textContent = '▶️';
-      waveform.classList.remove('playing');
-      waveform.classList.add('paused');
-    }
-  } else {
-    alert('💕 Please upload your voice message first! The upload prompt will appear when you load the page.');
-  }
-});
-
-audioPlayer.addEventListener('ended', () => {
-  playBtn.textContent = '▶️';
-  waveform.classList.remove('playing');
-  waveform.classList.add('paused');
-});
 
 // Continuous hearts rain
 setInterval(() => {
