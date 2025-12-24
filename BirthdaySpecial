@@ -687,11 +687,11 @@ button:hover {
 <!-- VOICE MESSAGE SECTION (FIRST) -->
 <div class="voice-intro-section" id="voiceIntroSection">
   <div class="voice-intro-container">
-    <div class="voice-intro-title">A Special Message 💖</div>
+    <div class="voice-intro-title"> A Special Message 💖</div>
     <div class="voice-intro-subtitle">Before we celebrate, I have something special to tell you...<br>Press play and listen with your heart 💕</div>
     <div class="audio-player">
       <button class="play-button" id="playBtnIntro">▶️</button>
-      <audio id="audioPlayerIntro" src="abc.mp3"></audio>
+      <audio id="audioPlayerIntro" src="audio.mp3"></audio>
       <div class="waveform paused" id="waveformIntro">
         <span></span><span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span><span></span><span></span>
@@ -748,27 +748,33 @@ button:hover {
     <div class="photo-grid">
       <div class="photo-frame">
         <div class="photo-placeholder" id="photo1">
-          <img src="YOUR_IMAGE_PATH_1.jpg" alt="Izma's photo 1">
+          <img src="Adaaen.jpg" alt="Izma's photo 1">
         </div>
         <div class="photo-caption">The one who lights up my world</div>
       </div>
       <div class="photo-frame">
         <div class="photo-placeholder" id="photo2">
-          <img src="YOUR_IMAGE_PATH_2.jpg" alt="Izma's photo 2">
+          <img src="Face.jpg" alt="Izma's photo 2">
         </div>
         <div class="photo-caption">My source of happiness</div>
       </div>
       <div class="photo-frame">
         <div class="photo-placeholder" id="photo3">
-          <img src="YOUR_IMAGE_PATH_3.jpg" alt="Izma's photo 3">
+          <img src="Noselips.jpg" alt="Izma's photo 3">
         </div>
         <div class="photo-caption">Every moment with you is precious</div>
       </div>
       <div class="photo-frame">
         <div class="photo-placeholder" id="photo4">
-          <img src="YOUR_IMAGE_PATH_4.jpg" alt="Izma's photo 4">
+          <img src="mermaid.jpg" alt="Izma's photo 4">
         </div>
         <div class="photo-caption">The birthday girl who stole my heart</div>
+      </div>
+      <div class="photo-frame">
+        <div class="photo-placeholder" id="photo5">
+          <img src="eyes.jpg" alt="Izma's photo 5">
+        </div>
+        <div class="photo-caption">The eyes that I fell for!</div>
       </div>
     </div>
   </div>
@@ -781,17 +787,17 @@ button:hover {
     <div class="poetry-images">
       <div class="poetry-image-wrapper">
         <div class="poetry-placeholder" id="poetry1">
-          <img src="YOUR_POETRY_IMAGE_1.jpg" alt="Poetry 1">
+          <img src="SAVE_20251222_231129.jpg" alt="Poetry 1">
         </div>
       </div>
       <div class="poetry-image-wrapper">
         <div class="poetry-placeholder" id="poetry2">
-          <img src="YOUR_POETRY_IMAGE_2.jpg" alt="Poetry 2">
+          <img src="SAVE_20251222_231135.jpg" alt="Poetry 2">
         </div>
       </div>
       <div class="poetry-image-wrapper">
         <div class="poetry-placeholder" id="poetry3">
-          <img src="YOUR_POETRY_IMAGE_3.jpg" alt="Poetry 3">
+          <img src="SAVE_20251222_231121.jpg" alt="Poetry 3">
         </div>
       </div>
     </div>
@@ -809,6 +815,7 @@ button:hover {
     Magical moments, and dreams come true! 🌟💕✨
   </div>
   <div class="signature">Forever yours, with all my love ❤️</div>
+  <div class="signature">Yours Araib ❤️</div>
 </div>
 
 <script>
